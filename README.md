@@ -1,4 +1,4 @@
-# Easy Json DB
+# Easy DB JSON
 Kinda inspired by [easy-json-database](https://www.npmjs.com/package/easy-json-database)
 
 But this is fully node.js (*no typescript)*
@@ -8,7 +8,7 @@ This also is made for multiple files if you want :p
 ## Example
 
 ```js
-const db = require("easy-json-db");
+const db = require("easy-db-json");
 
 // Create new file for db, then switch back
 db.setFile("./math.json")

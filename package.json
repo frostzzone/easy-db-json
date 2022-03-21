@@ -1,6 +1,6 @@
 {
-  "name": "easy-json-db",
-  "version": "1.0.0",
+  "name": "easy-db-json",
+  "version": "1.0.1",
   "description": "Just another json database package",
   "main": "src/index.js",
   "scripts": {
@@ -8,11 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git repo here"
+    "url": "https://github.com/frostzzone/easy-json-db"
   },
   "keywords": [
     "database",
-    "json"
+    "json",
+    "db",
+    "easy"
   ],
   "author": "frostzzone",
   "license": "ISC",
