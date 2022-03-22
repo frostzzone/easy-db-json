@@ -46,6 +46,8 @@ db.setFile("./db.json")
 db.set("array", [ "apple" ]);
 db.set("array", [ "apple" ], './math.json');
 
+db.push("array", 7)
+db.push("array", 7, "./math.json")
 // Clear data
 db.clear();
 db.clear('./math.json');

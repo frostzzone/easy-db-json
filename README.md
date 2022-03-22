@@ -1,7 +1,7 @@
 # Easy DB JSON
 Kinda inspired by [easy-json-database](https://www.npmjs.com/package/easy-json-database)
 
-But this is fully node.js (*no typescript)*
+But this is fully node.js (*no typescript*)
 
 This also is made for multiple files if you want :p
 
@@ -56,6 +56,9 @@ db.setFile("./db.json")
 db.set("array", [ "apple" ]);
 db.set("array", [ "apple" ], './math.json');
 
+db.push("array", "orange")
+db.push("array", "orange", "./math.json")
+
 // Clear data
 db.clear();
 db.clear('./math.json');
@@ -77,5 +80,6 @@ console.log(db.all("./math.json"))
 | .subtract("key", value, "./file") | String/Number, Number, String | *True*, *True*, *False* | None | Removes **value** from the value of **key** *(value of key has to be a number)* |
 | .multiply("key", value, "./file") | String/Number, Number, String | *True*, *True*, *False* | None | Multiplys the value of **key** with **value** *(value of key has to be a number)* |
 | .divide("key", value, "./file") | String/Number, Number, String | *True*, *True*, *False* | None | Divides the value of **key** by **value** *(value of key has to be a number)* |
+| .push("key", value, "./file") | String/Number, any, String | *True*, *True*, *False* | None | If **key** is a list, it adds **value** to the end |
 | .clear("./file") | String | *False* | None | Deletes all data from **file** |
 | .all("./file") | String | *False* | Object | Returns all data from the database |

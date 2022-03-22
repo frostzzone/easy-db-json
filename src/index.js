@@ -250,6 +250,38 @@ function setFile(file, logs) {
     }
 }
 
+  function push(item, value, file){
+    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a value to set the item`))
+    try {
+        if (!file || !file.length || file == undefined) {
+            fil = Gfile;
+        } else {
+            fil = file
+        }
+    } catch (err) {
+        fil = Gfile;
+    }
+
+    try {
+        const jsonString = fs.readFileSync(fil);
+        data = JSON.parse(jsonString);
+    } catch (err) {
+        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+    }
+    try {
+        if (!(Array.isArray(data[item])) && data[item] !== undefined) return console.log(chalk.hex('#ff0000').bold("Can not add: value of item is not an array"))
+        if (data[item] == undefined) {
+            data[item] = [value]
+        } else {
+let array = data[item];
+          array[array.length] = value
+            data[item] = array
+        }
+        fs.writeFileSync(fil, JSON.stringify(data))
+    } catch (err) {}
+  }
+
 module.exports = {
     get,
     set,
@@ -261,5 +293,6 @@ module.exports = {
     multiply,
     clear,
     all,
-    setFile
+    setFile,
+push
 }
