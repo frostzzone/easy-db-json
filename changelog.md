@@ -5,3 +5,7 @@
 ## Version 1.1.0
 - Lil update
 - Added: push
+
+## Version 1.1.2
+- Not much
+- Make json files look nice

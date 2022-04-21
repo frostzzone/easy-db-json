@@ -44,7 +44,7 @@ function set(item, value, file) {
     }
     try {
         data[item] = value;
-        fs.writeFileSync(fil, JSON.stringify(data))
+        fs.writeFileSync(fil, JSON.stringify(data, null, 4))
     } catch (err) {}
 }
 
@@ -68,7 +68,7 @@ function del(item, file) {
     }
     try {
         delete data[item];
-        fs.writeFileSync(fil, JSON.stringify(data))
+        fs.writeFileSync(fil, JSON.stringify(data, null, 4))
     } catch (err) {}
 }
 
@@ -116,7 +116,7 @@ function add(item, value, file) {
         } else {
             data[item] = (data[item] + value);
         }
-        fs.writeFileSync(fil, JSON.stringify(data))
+        fs.writeFileSync(fil, JSON.stringify(data, null, 4))
     } catch (err) {}
 }
 
@@ -147,7 +147,7 @@ function subtract(item, value, file) {
         } else {
             data[item] = (data[item] - value);
         }
-        fs.writeFileSync(fil, JSON.stringify(data))
+        fs.writeFileSync(fil, JSON.stringify(data, null, 4))
     } catch (err) {}
 }
 
@@ -178,7 +178,7 @@ function divide(item, value, file) {
         } else {
             data[item] = (data[item] / value);
         }
-        fs.writeFileSync(fil, JSON.stringify(data))
+        fs.writeFileSync(fil, JSON.stringify(data, null, 4))
     } catch (err) {}
 }
 
@@ -209,7 +209,7 @@ function multiply(item, value, file) {
         } else {
             data[item] = (data[item] * value);
         }
-        fs.writeFileSync(fil, JSON.stringify(data))
+        fs.writeFileSync(fil, JSON.stringify(data, null, 4))
     } catch (err) {}
 }
 
@@ -278,7 +278,7 @@ let array = data[item];
           array[array.length] = value
             data[item] = array
         }
-        fs.writeFileSync(fil, JSON.stringify(data))
+        fs.writeFileSync(fil, JSON.stringify(data, null, 4))
     } catch (err) {}
   }
 
@@ -294,5 +294,5 @@ module.exports = {
     clear,
     all,
     setFile,
-push
+    push
 }
