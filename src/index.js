@@ -1,5 +1,5 @@
 const fs = require("fs");
-const chalk = require('chalk') //use version 4.1.2 because this is CJS
+const ansiColors = require('ansi-colors') 
 
 let object = new Object();
 var
@@ -17,15 +17,15 @@ function get(item, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
         return undefined;
     }
     return data[item];
 }
 
 function set(item, value, file) {
-    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a value to set the item`))
+    if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -40,7 +40,7 @@ function set(item, value, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
     }
     try {
         data[item] = value;
@@ -49,7 +49,7 @@ function set(item, value, file) {
 }
 
 function del(item, file) {
-    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
+    if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -64,7 +64,7 @@ function del(item, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
     }
     try {
         delete data[item];
@@ -82,7 +82,7 @@ function has(item, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
         return undefined;
     }
     if (data[item] == undefined) return false;
@@ -90,8 +90,8 @@ function has(item, file) {
 }
 
 function add(item, value, file) {
-    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a value to set the item`))
+    if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -106,11 +106,11 @@ function add(item, value, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
     }
     try {
-        if (typeof(value) !== "number") return console.log(chalk.hex('#ff0000').bold(`Can not add letters`))
-        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(chalk.hex('#ff0000').bold("Can not add: value of item is not a number"))
+        if (typeof(value) !== "number") return console.log(ansiColors.red.bold(`Can not add letters`))
+        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(ansiColors.red.bold("Can not add: value of item is not a number"))
         if (data[item] == undefined) {
             data[item] = value
         } else {
@@ -121,8 +121,8 @@ function add(item, value, file) {
 }
 
 function subtract(item, value, file) {
-    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a value to set the item`))
+    if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -137,11 +137,11 @@ function subtract(item, value, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
     }
     try {
-        if (typeof(value) !== "number") return console.log(chalk.hex('#ff0000').bold(`Can not add letters`))
-        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(chalk.hex('#ff0000').bold("Can not add: value of item is not a number"))
+        if (typeof(value) !== "number") return console.log(ansiColors.red.bold(`Can not add letters`))
+        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(ansiColors.red.bold("Can not add: value of item is not a number"))
         if (data[item] == undefined) {
             data[item] = value
         } else {
@@ -152,8 +152,8 @@ function subtract(item, value, file) {
 }
 
 function divide(item, value, file) {
-    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a value to set the item`))
+    if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -168,11 +168,11 @@ function divide(item, value, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
     }
     try {
-        if (typeof(value) !== "number") return console.log(chalk.hex('#ff0000').bold(`Can not add letters`))
-        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(chalk.hex('#ff0000').bold("Can not add: value of item is not a number"))
+        if (typeof(value) !== "number") return console.log(ansiColors.red.bold(`Can not add letters`))
+        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(ansiColors.red.bold("Can not add: value of item is not a number"))
         if (data[item] == undefined) {
             data[item] = value
         } else {
@@ -183,8 +183,8 @@ function divide(item, value, file) {
 }
 
 function multiply(item, value, file) {
-    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a value to set the item`))
+    if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -199,11 +199,11 @@ function multiply(item, value, file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
     }
     try {
-        if (typeof(value) !== "number") return console.log(chalk.hex('#ff0000').bold(`Can not add letters`))
-        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(chalk.hex('#ff0000').bold("Can not add: value of item is not a number"))
+        if (typeof(value) !== "number") return console.log(ansiColors.red.bold(`Can not add letters`))
+        if (typeof(data[item]) !== "number" && data[item] !== undefined) return console.log(ansiColors.red.bold("Can not add: value of item is not a number"))
         if (data[item] == undefined) {
             data[item] = value
         } else {
@@ -232,27 +232,27 @@ function all(file) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
         return undefined;
     }
     return data;
 }
 
 function setFile(file, logs) {
-    if (!file || !file.length || file == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a file`))
+    if (!file || !file.length || file == undefined) return console.log(ansiColors.red.bold(`Please specify a file`))
     Gfile = file
     let log = logs || false
     if (!fs.existsSync(Gfile)) {
         fs.writeFileSync(Gfile, "{}")
-        if (log) console.log(chalk.green(`Successfully created file "${Gfile}"`))
+        if (log) console.log(ansiColors.green(`Successfully created file "${Gfile}"`))
     } else {
-        if (log) console.log(chalk.green(`Successfully connected to file "${Gfile}"`))
+        if (log) console.log(ansiColors.green(`Successfully connected to file "${Gfile}"`))
     }
 }
 
   function push(item, value, file){
-    if (!String(item) || !String(item).length || item == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(chalk.hex('#ff0000').bold(`Please specify a value to set the item`))
+    if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -267,10 +267,10 @@ function setFile(file, logs) {
         const jsonString = fs.readFileSync(fil);
         data = JSON.parse(jsonString);
     } catch (err) {
-        console.log(chalk.hex('#ff0000').bold(`File doesn't exist, or is formatted incorrectly`))
+        console.log(ansiColors.red.bold(`File doesn't exist, or is formatted incorrectly`))
     }
     try {
-        if (!(Array.isArray(data[item])) && data[item] !== undefined) return console.log(chalk.hex('#ff0000').bold("Can not add: value of item is not an array"))
+        if (!(Array.isArray(data[item])) && data[item] !== undefined) return console.log(ansiColors.red.bold("Can not add: value of item is not an array"))
         if (data[item] == undefined) {
             data[item] = [value]
         } else {
