@@ -1,6 +1,11 @@
 db.json
 math.json
 test.js
+
+# Repl stuff
+.repl
+replit.nix
+
 # Logs
 logs
 *.log

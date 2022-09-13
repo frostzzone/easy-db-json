@@ -7,7 +7,7 @@ var
     fil,
     data
 
-function get(item, file) {
+function get(item, file="") {
     if (!file || !file.length || file == undefined) {
         fil = Gfile;
     } else {
@@ -23,7 +23,7 @@ function get(item, file) {
     return data[item];
 }
 
-function set(item, value, file) {
+function set(item, value, file="") {
     if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
     if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
@@ -48,7 +48,7 @@ function set(item, value, file) {
     } catch (err) {}
 }
 
-function del(item, file) {
+function del(item, file="") {
     if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
     try {
         if (!file || !file.length || file == undefined) {
@@ -72,7 +72,7 @@ function del(item, file) {
     } catch (err) {}
 }
 
-function has(item, file) {
+function has(item, file="") {
     if (!file || !file.length || file == undefined) {
         fil = Gfile;
     } else {
@@ -89,7 +89,7 @@ function has(item, file) {
     return true;
 }
 
-function add(item, value, file) {
+function add(item, value, file="") {
     if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
     if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
@@ -120,9 +120,9 @@ function add(item, value, file) {
     } catch (err) {}
 }
 
-function subtract(item, value, file) {
+function subtract(item, value=0, file="") {
     if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
+    if (!String(value) || !String(value).length || value == undefined || value == 0) return console.log(ansiColors.red.bold(`Please specify a value to remove from the item`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -151,9 +151,9 @@ function subtract(item, value, file) {
     } catch (err) {}
 }
 
-function divide(item, value, file) {
+function divide(item, value=1, file="") {
     if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
+    if (!String(value) || !String(value).length || value == undefined || value == 1) return console.log(ansiColors.red.bold(`Please specify a value to divide the item by`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -182,9 +182,9 @@ function divide(item, value, file) {
     } catch (err) {}
 }
 
-function multiply(item, value, file) {
+function multiply(item, value=1, file="") {
     if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
-    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
+    if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to multiply the item by`))
     try {
         if (!file || !file.length || file == undefined) {
             fil = Gfile;
@@ -213,7 +213,7 @@ function multiply(item, value, file) {
     } catch (err) {}
 }
 
-function clear(file) {
+function clear(file="") {
     if (!file || !file.length || file == undefined) {
         fil = Gfile;
     } else {
@@ -222,7 +222,7 @@ function clear(file) {
     fs.writeFileSync(fil, "{}")
 }
 
-function all(file) {
+function all(file="") {
     if (!file || !file.length || file == undefined) {
         fil = Gfile;
     } else {
@@ -238,10 +238,10 @@ function all(file) {
     return data;
 }
 
-function setFile(file, logs) {
+function setFile(file="", logs=false) {
     if (!file || !file.length || file == undefined) return console.log(ansiColors.red.bold(`Please specify a file`))
     Gfile = file
-    let log = logs || false
+    let log = logs
     if (!fs.existsSync(Gfile)) {
         fs.writeFileSync(Gfile, "{}")
         if (log) console.log(ansiColors.green(`Successfully created file "${Gfile}"`))
@@ -250,7 +250,7 @@ function setFile(file, logs) {
     }
 }
 
-  function push(item, value, file){
+  function push(item, value, file=""){
     if (!String(item) || !String(item).length || item == undefined) return console.log(ansiColors.red.bold(`Please specify an item`))
     if (!String(value) || !String(value).length || value == undefined) return console.log(ansiColors.red.bold(`Please specify a value to set the item`))
     try {
